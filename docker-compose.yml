@@ -1,4 +1,3 @@
-version: '3.2'
 services:
     haproxy:
         container_name: haproxy
@@ -14,7 +13,7 @@ services:
         # use the latest golang image
         image: golang
         # go to the right place and starts the app
-        command: /bin/sh -c 'ssh-keygen -N "" -t rsa -f /etc/ssh/ssh_host_rsa_key >/dev/null; cd /go/src/; if [ -e /runbin/pwd ]; then /runbin/pwd  -save /pwd/sessions -name l2; else go run api.go -save /pwd/sessions -name l2; fi'
+        command: /bin/sh -c 'ssh-keygen -N "" -t rsa -f /etc/ssh/ssh_host_rsa_key >/dev/null; cd /go/src/; if [ -e /runbin/pwd ]; then /runbin/pwd  -save /pwd/sessions -name l2 -playground-domain nested.local ; else go run api.go -save /pwd/sessions -name l2 -playground-domain nested.local; fi'
         environment:
           - APPARMOR_PROFILE=docker-dind
         volumes:
