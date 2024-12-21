@@ -27,7 +27,7 @@ COPY ./resolv.conf.override /etc/
 COPY ./docker.service /usr/lib/systemd/system/
 COPY ./.bashrc /root/
 
-COPY motd /etc/motd
+COPY ${MOTD:-motd} /etc/motd
 
 
 RUN echo 'source <(kubectl completion bash)' >>~/.bashrc \
